@@ -1,0 +1,10 @@
+{
+  "name": "serverless-backend-demo",
+  "version": "1.0.0",
+  "description": "A demo backend serverless app",
+  "main": "index.js",
+  "repository": "git@github.com:douglasffilho/serverless-backend-demo.git",
+  "author": "Douglas Fernandes <douglasf.filho@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
