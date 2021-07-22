@@ -1,0 +1,97 @@
+service: serverless-backend-demo
+
+frameworkVersion: 2.52.0
+unresolvedVariablesNotificationMode: error
+variablesResolutionMode: 20210326
+configValidationMode: error
+useDotenv: true
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-deployment-bucket
+  - serverless-prune-plugin
+  - serverless-offline #needs to be de underlying plugin
+
+package:
+  individually: true
+  excludeDevDependencies: true
+  patterns:
+    - node_modules/**
+    - src/**
+    - '!.github/**'
+    - '!.vscode/**'
+    - '!coverage/**'
+    - '!dist-*/**'
+    - '!resources/**'
+    - '!test/**'
+    - '!.editorconfig'
+    - '!.eslintrc.yml'
+    - '!.gitignore'
+    - '!.nvmrc'
+    - '!.prettier*'
+    - '!jest.config.js'
+    - '!package.json'
+    - '!package-lock.json'
+    - '!yarn.lock'
+    - '!README.md'
+    - '!serverless.yml'
+
+provider:
+  name: aws
+  region: ${opt:region}
+  stage: ${opt:stage}
+  runtime: nodejs14.x
+  versionFunctions: true
+  logRetentionInDays: 5
+  lambdaHashingVersion: 20201221
+  timeout: 60
+  stackName: ${self:service}-${self:provider.stage}
+  stackTags:
+    Tier: backend
+    Environment: ${self:provider.stage}
+    Product: ${self:service}
+    Name: ${self:service}
+    App: ${self:service}
+    Service-Provided: lambda
+  deploymentBucket:
+    name: dev.douglasffilho.${self:provider.region}.deploys
+  iam:
+    role: ${env:AWS_ROLE}
+  logs:
+    restApi:
+      accessLogging: true
+      executionLogging: true
+
+functions:
+  calculator-sum:
+    handler: src/calculator.sum
+    events:
+      - http:
+          path: '/calculator/sum'
+          method: POST
+
+  calculator-sub:
+    handler: src/calculator.sub
+    events:
+      - http:
+          path: '/calculator/sub'
+          method: POST
+
+  calculator-multi:
+    handler: src/calculator.multi
+    events:
+      - http:
+          path: '/calculator/multi'
+          method: POST
+
+  calculator-div:
+    handler: src/calculator.div
+    events:
+      - http:
+          path: '/calculator/div'
+          method: POST
+
+custom:
+  prune:
+    automatic: true
+    number: 3

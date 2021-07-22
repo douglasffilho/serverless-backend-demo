@@ -2,9 +2,25 @@
   "name": "serverless-backend-demo",
   "version": "1.0.0",
   "description": "A demo backend serverless app",
-  "main": "index.js",
+  "main": "src/calculator.js",
   "repository": "git@github.com:douglasffilho/serverless-backend-demo.git",
   "author": "Douglas Fernandes <douglasf.filho@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "dev": "sls offline --stage dev --region sa-east-1",
+    "deploy": "sls deploy --stage prod --region sa-east-1",
+    "deploy:with-credentials": "chmod +x deploy && ./deploy",
+    "clean": "chmod +x clean && ./clean",
+    "lint": "eslint . --fix"
+  },
+  "devDependencies": {
+    "eslint": "7.31.0",
+    "prettier": "2.3.2",
+    "serverless-deployment-bucket": "1.5.1",
+    "serverless-dotenv-plugin": "3.9.0",
+    "serverless-offline": "7.0.0",
+    "serverless-prune-plugin": "1.5.1"
+  },
+  "dependencies": {}
 }

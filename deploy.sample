@@ -1,0 +1,1 @@
+AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<secret> AWS_ROLE=arn:aws:iam::<account_id>:role/lambda-execution sls deploy --stage prod --region sa-east-1
