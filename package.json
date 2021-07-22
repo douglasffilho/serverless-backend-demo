@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "sls offline --stage dev --region sa-east-1",
     "deploy": "sls deploy --stage prod --region sa-east-1",
     "deploy:with-credentials": "chmod +x deploy && ./deploy",
