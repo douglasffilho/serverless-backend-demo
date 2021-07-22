@@ -14,8 +14,24 @@
     "clean": "chmod +x clean && ./clean",
     "lint": "eslint . --fix"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
   "devDependencies": {
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
     "eslint": "7.31.0",
+    "git-cz": "4.7.6",
+    "husky": "7.0.1",
+    "lint-staged": "11.1.0",
     "prettier": "2.3.2",
     "serverless-deployment-bucket": "1.5.1",
     "serverless-dotenv-plugin": "3.9.0",
