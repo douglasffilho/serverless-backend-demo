@@ -29,7 +29,7 @@ const handle = async (event, operation) => {
       statusCode: 400,
       body: stringify({
         message:
-                    'give us an array of numbers like "{ "numbers": [1, 1, 2, 3, 5] }"',
+          'give us an array of numbers like "{ "numbers": [1, 1, 2, 3, 5] }"',
         logref: 'invalid-input',
       }),
     };

@@ -13,7 +13,8 @@
     "deploy": "sls deploy --stage prod --region sa-east-1",
     "deploy:with-credentials": "chmod +x deploy && ./deploy",
     "clean": "chmod +x clean && ./clean",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix && prettier --write ./src",
+    "test": "NODE_ENV=test jest --coverage --forceExit"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -30,8 +31,12 @@
     "@commitlint/cli": "12.1.4",
     "@commitlint/config-conventional": "12.1.4",
     "eslint": "7.31.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-jest": "24.4.0",
+    "eslint-plugin-prettier": "3.4.0",
     "git-cz": "4.7.6",
     "husky": "7.0.1",
+    "jest": "27.0.6",
     "lint-staged": "11.1.0",
     "prettier": "2.3.2",
     "serverless-deployment-bucket": "1.5.1",
@@ -39,5 +44,10 @@
     "serverless-offline": "7.0.0",
     "serverless-prune-plugin": "1.5.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "engines": {
+    "node": "14.17.3",
+    "npm": "6.14.13",
+    "yarn": "1.22.10"
+  }
 }
