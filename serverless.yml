@@ -35,6 +35,12 @@ package:
     - '!yarn.lock'
     - '!README.md'
     - '!serverless.yml'
+    - '!deploy'
+    - '!deploy.sample'
+    - '!clean'
+    - '!.husky'
+    - '!commitlint.config.js'
+    - '!.eslintignore'
 
 provider:
   name: aws
