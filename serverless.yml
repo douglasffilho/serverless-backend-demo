@@ -1,4 +1,4 @@
-service: serverless-backend-demo
+service: serverless-backend-template
 
 frameworkVersion: 2.52.0
 unresolvedVariablesNotificationMode: error
@@ -70,28 +70,28 @@ provider:
 
 functions:
   calculator-sum:
-    handler: src/calculator.sum
+    handler: src/handler.sum
     events:
       - http:
           path: '/calculator/sum'
           method: POST
 
   calculator-sub:
-    handler: src/calculator.sub
+    handler: src/handler.sub
     events:
       - http:
           path: '/calculator/sub'
           method: POST
 
   calculator-multi:
-    handler: src/calculator.multi
+    handler: src/handler.multi
     events:
       - http:
           path: '/calculator/multi'
           method: POST
 
   calculator-div:
-    handler: src/calculator.div
+    handler: src/handler.div
     events:
       - http:
           path: '/calculator/div'

@@ -1,9 +1,9 @@
 {
-  "name": "serverless-backend-demo",
+  "name": "serverless-backend-template",
   "version": "1.0.0",
-  "description": "A demo backend serverless app",
-  "main": "src/calculator.js",
-  "repository": "git@github.com:douglasffilho/serverless-backend-demo.git",
+  "description": "A template for serverless backend app",
+  "main": "src/handler.js",
+  "repository": "git@github.com:douglasffilho/serverless-backend-template.git",
   "author": "Douglas Fernandes <douglasf.filho@gmail.com>",
   "license": "MIT",
   "private": true,
@@ -44,7 +44,9 @@
     "serverless-offline": "7.0.0",
     "serverless-prune-plugin": "1.5.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "debug": "4.3.2"
+  },
   "engines": {
     "node": "14.17.3",
     "npm": "6.14.13",
