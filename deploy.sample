@@ -1,1 +1,67 @@
+# To run this command you may have created a devops user with the following permissions:
+# Roles:
+# - AWSLambdaVPCAccessExecutionRole
+# - AWSLambda_FullAccess
+# Managed policies:
+# - AWSLambdaLogsManagement (you can create with another name):
+#   - CloudWatch Logs (full access):
+#    {
+#        "Version": "2012-10-17",
+#        "Statement": [
+#            {
+#                "Sid": "VisualEditor0",
+#                "Effect": "Allow",
+#                "Action": "logs:*",
+#                "Resource": "*"
+#            }
+#        ]
+#    }
+#
+# - AWSLambaRoleManagement (you can create with another name):
+#   - IAM (List, Read, Write, Manage Permissions):
+#   {
+#      "Version": "2012-10-17",
+#      "Statement": [
+#          {
+#             "Sid": "VisualEditor0",
+#             "Effect": "Allow",
+#             "Action": [
+#                 "iam:CreatePolicy",
+#                 "iam:ListPolicies",
+#                 "iam:GetRole",
+#                 "iam:GetPolicy",
+#                 "iam:DeleteRolePolicy",
+#                 "iam:ListRoles",
+#                 "iam:CreateRole",
+#                 "iam:DeleteRole",
+#                 "iam:UpdateRole",
+#                 "iam:PutRolePolicy",
+#                 "iam:ListRolePolicies",
+#                 "iam:GetRolePolicy"
+#             ],
+#             "Resource": "*"
+#         }
+#      ]
+#   }
+#
+# - AWSRestAPI_FullAccess (full access):
+#   {
+#       "Version": "2012-10-17",
+#       "Statement": [
+#           {
+#               "Sid": "VisualEditor0",
+#               "Effect": "Allow",
+#               "Action": [
+#                   "apigateway:DELETE",
+#                   "apigateway:PUT",
+#                   "apigateway:PATCH",
+#                   "apigateway:POST",
+#                   "apigateway:GET"
+#               ],
+#               "Resource": "*"
+#           }
+#       ]
+#   }
+#
+
 AWS_ACCESS_KEY_ID=<key> AWS_SECRET_ACCESS_KEY=<secret> AWS_ROLE=arn:aws:iam::<account_id>:role/lambda-execution sls deploy --stage prod --region sa-east-1
