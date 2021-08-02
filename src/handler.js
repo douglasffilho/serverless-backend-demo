@@ -2,22 +2,22 @@ const { parse, stringify, LoggerFactory } = require('./utils');
 const log = LoggerFactory('handler');
 
 const sumOperation = (numbers) => {
-  log.info('running a sum with %o', numbers[numbers.length - 1]);
+  log('sumOperation').info('running a sum with %o', numbers);
   return numbers.reduce((accum, current) => (accum ?? 0) + current);
 };
 
 const subtractOperation = (numbers) => {
-  log.info('running a subtraction with %o', numbers);
+  log('subtractOperation').info('running a subtraction with %o', numbers);
   return numbers.reduce((accum, current) => (accum ?? 0) - current);
 };
 
 const multiplyOperation = (numbers) => {
-  log.info('running a multiplication with %o', numbers);
+  log('multiplyOperation').info('running a multiplication with %o', numbers);
   return numbers.reduce((accum, current) => (accum ?? 1) * current);
 };
 
 const divideOperation = (numbers) => {
-  log.info('running a division with %o', numbers);
+  log('divideOperation').info('running a division with %o', numbers);
   if (numbers[numbers.length - 1] === 0)
     throw new Error('invalid division by zero');
   return numbers.reduce((accum, current) => (accum ?? 1) / current);
@@ -26,7 +26,7 @@ const divideOperation = (numbers) => {
 const handle = async (event, operation) => {
   const { numbers } = parse(event?.body ?? '{}');
   if (!numbers) {
-    log.warn('no numbers found on event %o', event);
+    log('handle').warn('no numbers found on event %o', event);
 
     return {
       statusCode: 400,
@@ -43,7 +43,7 @@ const handle = async (event, operation) => {
 
     return { body: stringify({ response }), statusCode: 200 };
   } catch (error) {
-    log.error('error trying to do operation %o', error);
+    log('handle').error('error trying to do operation %o', error);
 
     return {
       statusCode: 500,

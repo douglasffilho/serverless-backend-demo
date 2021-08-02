@@ -8,21 +8,20 @@ module.exports.parse = (str) => {
   return JSON.parse(str);
 };
 
-module.exports.LoggerFactory = (source) => {
+module.exports.LoggerFactory = (source) => (method) => {
+  const logger = debug('app');
+
   return {
     info(message, ...args) {
-      const logger = debug(source);
-      logger(`INFO :: ${source} :: ${message}`, ...args);
+      logger(`INFO :: ${source} :: ${method} :: ${message}`, ...args);
     },
 
     warn(message, ...args) {
-      const logger = debug(source);
-      logger(`WARN :: ${source} :: ${message}`, ...args);
+      logger(`WARN :: ${source} :: ${method} :: ${message}`, ...args);
     },
 
     error(message, ...args) {
-      const logger = debug(source);
-      logger(`ERROR :: ${source} :: ${message}`, ...args);
+      logger(`ERROR :: ${source} :: ${method} :: ${message}`, ...args);
     },
   };
 };
